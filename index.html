@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+            <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+            <meta content="width=device-width, initial-scale=1.0" name="viewport">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+            <link rel="stylesheet" type="text/css" href="style.css">
+            <title> Simple Form</title>
+
+</head>
+
+<body>
+<div class="header">
+  <h1 class="ok">Welcome To IWP CLASS</h1>
+</div>
+
+<h1>REGISTRATION FORM</h1>
+
+            <form name="myform" method="get" onSubmit="return validate()">
+
+                        <table align="center" cellpadding="10">
+
+            <!--First Name-->
+
+                        <tr>
+
+                                    <td> First Name </td>
+
+                                    <td> <input type="text" name="fname" maxlength="30"/></td>
+
+                        </tr>
+
+            <!--Last Name--> 
+
+                        <tr>
+
+                              <td> Last Name </td>
+
+                              <td> <input type="text" name="lname" maxlength="30"/></td>
+
+                        </tr>             
+
+            <!--DOB -->
+
+                        <tr>
+
+                              <td> Date of Birth </td>
+
+                              <td> <input type="date" name="date" id="date" min="1981-01-01"/></td>
+
+                        </tr>                                     
+
+            <!--Email ID-->
+
+                        <tr>
+
+                              <td> Email ID </td>
+
+                              <td> <input type="text" name="email" maxlength="100" size="40" /></td>
+
+                        </tr>
+
+            <!--Phone no.--> 
+
+                        <tr>
+
+                              <td> Phone </td>
+
+                              <td> <input type="tel" name="phone"/>    </td>
+
+                        </tr> 
+
+            <!--Gender radio button--> 
+
+                        <tr>
+
+                              <td> Gender </td>
+
+                              <td> Male <input type="radio" name="gender" value="male"/>
+
+                              Female <input type="radio" name="gender" value="female"/></td>
+
+                        </tr>
+
+            <!--Address-->
+
+                        <tr>
+
+                              <td>Address</td>
+
+                              <td><textarea name="address" placeholder="Enter Address" cols="50"></textarea></td>
+
+                        </tr>             
+
+            <!--State select tag-->
+
+                        <tr>
+
+                              <td>State</td>
+
+                              <td>
+
+                                    <select id="state" name="state">
+
+                                    <option value="Select a state">Select a state</option>
+
+                                    <option value="Tamilnadu">Tamilnadu</option>
+
+                                    <option value="manipur">Manipur</option>
+
+                                    <option value="delhi">Delhi</option>
+
+                                    <option value="kolkata">Kolkata</option>
+
+                                    </select>
+
+                              </td>
+
+                        </tr>
+
+            <!--Country--> 
+
+                        <tr>
+
+                              <td> Country</td>
+
+                              <td> <input type="text" value="India" name="country" readonly="readonly"/></td>
+
+                        </tr>
+
+            <!--Hobbies checkbox-->
+
+                        <tr>
+
+                              <td>Hobbies </td>
+
+                              <td> Drawing : <input type="checkbox" name="hobby"  id="hobby" value="draw"/>
+
+                                    Playing : <input type="checkbox" name="hobby" id="hobby" value="play"/>
+
+                                    Swimming : <input type="checkbox" name="hobby" id="hobby" value="swim"/>
+
+                                    travelling: <input type="checkbox" name="hobby" id="hobby" value="travel"/>
+
+                              </td>
+
+                        </tr>
+
+            <!--File Upload-->
+                        <tr>
+
+                              <td>Upload your Resume</td>
+
+                              <td><input type="file" id="myFile" name="filename" onchange="return fileValidation()"></td>
+
+                        </tr>
+
+            <!--Submit-->
+
+                        <tr>
+
+                              <td colspan="2" align="center">
+
+                              <button type="submit" name="submit" value="Submit" class="btn btn-primary">Submit</button>
+                              <button type="submit" class="btn btn-primary" name="submit">Send Feedback</button>
+
+                              </td>
+
+                        </tr>
+
+</table>
+
+</form>
+<!-- Validation of fields-->
+<script type="text/javascript">
+
+function validate()
+
+{
+
+            var first= document.forms["myform"]["fname"].value;
+
+            var last= document.forms["myform"]["lname"].value;
+
+            var date= document.forms["myform"]["date"].value;
+
+            var email= document.forms["myform"]["email"].value;
+
+            var phone= document.forms["myform"]["phone"].value;
+
+            var gender= document.forms["myform"]["gender"].value;
+
+            var address = document.forms["myform"]["address"].value;
+
+            var state= document.forms["myform"]["state"].value;
+
+            var hobby= document.getElementById("hobby");
+ 
+
+// first name validation
+
+if(first == "")
+
+            {
+
+alert("Enter The Name");
+
+            return false;
+
+            }
+
+if(!isNaN(first))
+
+            {
+
+            alert("Name should be in character");
+
+            return false;
+
+            }
+
+//last name validation
+
+if(last == "")
+
+            {
+
+            alert("Enter the last name");
+
+            return false;  }
+
+if(!isNaN(last))
+
+            {
+
+            alert("Name should be in character");
+
+            return false;
+
+            }
+
+// DOB validation
+
+if(date == "")
+
+            {
+
+            alert("Enter date of Birth");
+
+            return false;
+
+            }
+
+// email validation
+
+var at = email.indexOf("@");
+
+var dot = email.lastIndexOf(".");
+
+if(at<1||dot<at+2||dot+2 >= email.length)
+
+            {
+
+            alert("Not a valid email");
+
+            return false;
+
+            }
+
+//phone no. validation
+
+if(phone == "")
+
+            {
+
+alert("Enter phone no.");
+
+return false;}
+
+if(isNaN(phone))
+
+            {
+
+            alert("Phone no. should be in digit.");
+
+            return false;
+
+            }
+
+if( phone.length != 10)
+
+{
+
+            alert("Must be 10 digit no.");
+
+            return false;
+
+            }
+
+//gender radio validation
+
+if(gender=="")
+
+{
+
+alert("Select a gender");
+
+return false;
+
+}
+
+// address validation
+
+if(address == "")
+
+            {
+
+            alert("Enter Address");
+
+            return false;
+
+            }
+
+// state validation
+
+if(state=="Select a state")
+
+            {
+
+            alert("Select a state");
+
+            return false;
+
+            }
+
+// hobbies validation
+
+if(!hobby.checked)
+
+            {
+
+            alert("Select a hobby");
+
+            return false;
+
+            }
+
+}
+
+ </script>
+ <!----File Validation-->
+ <script>
+ function fileValidation(){
+    var fileInput = document.getElementById('myFile');
+    var filePath = fileInput.value;
+    var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif|\.pdf)$/i;
+    if(!allowedExtensions.exec(filePath)){
+        alert('Please upload file having extensions .jpeg/.jpg/.png/.gif only.');
+        fileInput.value = '';
+        return false;
+    }
+    
+}
+</script>
+<hr>
+
+<footer id="footer" >
+        <div class="container">
+            <div class="copyright">
+                <div class="mr-md-auto text-center text-md-left">
+                <div class="credits">
+
+                    <a target="_blank" href="#" class=""><span class="hari">Made by Harihara Sudhan 19BCE0742</span></a>
+                </div>
+            </div>
+        </div>
+  </div>
+</footer>
+</body>
+
+</html>
